@@ -1,6 +1,6 @@
-from utils.python_parser import parse_python_function_call
-from utils.java_parser import parse_java_function_call
-from utils.js_parser import parse_javascript_function_call
+from .utils.python_parser import parse_python_function_call
+# from utils.java_parser import parse_java_function_call
+# from utils.js_parser import parse_javascript_function_call
 
 FN_CALL_DELIMITER = "<<function>>"
 
@@ -21,14 +21,14 @@ def parse_function_call(call: str) -> dict[str, any]:
     except Exception as e:
         # If Python parsing fails, try Java parsing
         try:
-            java_result = parse_java_function_call(call)
+            # java_result = parse_java_function_call(call)
             if not java_result:
                 raise Exception("Java parsing failed")
             return java_result
         except Exception as e:
             # If Java parsing also fails, try JavaScript parsing
             try:   
-                javascript_result = parse_javascript_function_call(call)
+                # javascript_result = parse_javascript_function_call(call)
                 if not javascript_result:
                     raise Exception("JavaScript parsing failed")
                 return javascript_result
